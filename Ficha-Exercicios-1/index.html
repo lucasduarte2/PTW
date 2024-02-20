@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Risco Cardiovascular</title>
+  <link rel="stylesheet" href="styles/style.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="scripts/script.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <div class="calculator-container">
+      <h1>Níveis de Stress (Entre 3 e 6):</h1>
+      <input type="number" id="stress-levels" name="stress-levels" min="3" max="6" />
+      <h1>Cálculo do Risco Cardiovascular</h1>
+      <button id="reset-button">Reiniciar</button>
+      <div class="idade section">
+        <h2>Idade</h2>
+        <hr />
+        <button id="age-button-1" data-points="0" class="age-button">&lt; 30</button>
+        <button id="age-button-2" data-points="3" class="age-button">&lt; 60</button>
+        <button id="age-button-3" data-points="6" class="age-button">&ge; 60</button>
+      </div>
+      <div class="imc section">
+        <h2>IMC</h2>
+        <hr />
+        <button id="imc-button-1" data-points="0" class="imc-button">&lt; 25</button>
+        <button id="imc-button-2" data-points="5" class="imc-button">&lt; 40</button>
+        <button id="imc-button-3" data-points="9" class="imc-button">&ge; 40</button>
+      </div>
+      <div class="stress section">
+        <h2>Stress</h2>
+        <hr />
+        <!-- Botoes dinamicos -->
+      </div>
+      <img src="risco/risco.jpg" alt="Imagem" id="risk-image" />
+    </div>
+  </div>
+</body>
+</html>
