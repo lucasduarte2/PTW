@@ -1,0 +1,48 @@
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/style.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="scripts/wine.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="cabecalho">
+        <h1>Estatísticas dos Vinhos em Portugal</h1>
+        <h3 id="numero-registros"></h3>
+    </div>
+    <hr>
+    <div class="dadosAtuais">
+        <h2>Dados Selecionados</h2>
+    </div>
+    <hr>
+
+    <!-- Container - Conteudo da Aplicação -->
+
+    <div class="container">
+        <div class="opcoes">
+            <h3>Lista Geral</h3>
+                <label>Propriedade:</label>
+                <select onclick="propriedadeID()" name="propriedade" id="propriedade">
+                </select>
+                <br><br>
+                <label for="ordem">Ordem:</label>
+                <select name="ordem" id="ordem">
+                    <option value="asc">Ascendente</option>
+                    <option value="desc">Desscendente</option>
+                </select>
+                <br>
+            <h3>Lista por Qualidade</h3>
+                <label for="qualidade">Qualidade:</label>
+                <select name="qualidade" id="qualidade">
+                </select>
+        </div>
+        <div class="resultado">
+            <p>Resultado dos Filtros</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+body{
+    text-align: center;
+}
+
+.cabecalho{
+    /*border-color: black;
+    border-style: solid;*/
+}
+
+.dadosAtuais {
+    /*border-color: gray;
+    border-style: solid;*/
+    margin-top: 1%;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1%;
+}
+
+.opcoes {
+    border-style: solid;
+    width: 30%;
+    padding: 10px;
+    height: 500px;
+}
+
+.resultado {
+    border-style: solid;
+    width: 70%;
+    padding: 10px;
+    height: 500px;
+}
+
