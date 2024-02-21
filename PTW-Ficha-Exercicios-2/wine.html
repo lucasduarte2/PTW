@@ -17,6 +17,7 @@
     <hr>
     <div class="dadosAtuais">
         <h2>Dados Selecionados</h2>
+        <p id="dadosSelecionados"></p>
     </div>
     <hr>
 
@@ -32,12 +33,16 @@
                 <label for="ordem">Ordem:</label>
                 <select name="ordem" id="ordem">
                     <option value="asc">Ascendente</option>
-                    <option value="desc">Desscendente</option>
+                    <option value="desc">Decrescente</option>
                 </select>
                 <br>
             <h3>Lista por Qualidade</h3>
                 <label for="qualidade">Qualidade:</label>
-                <select name="qualidade" id="qualidade">
+                <select onclick="listarQualidadeValores()" id="qualidade">
+                </select>
+            <h3>Lista por Alcohol</h3>
+                <label for="alcohol">Alcohol:</label>
+                <select onclick="listarAlcoholValores()" id="alcohol">
                 </select>
         </div>
         <div class="resultado">

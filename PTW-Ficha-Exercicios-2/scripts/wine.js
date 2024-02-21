@@ -28529,34 +28529,101 @@ function listarValores() {
   const resultadoDiv = document.querySelector('.resultado');
   resultadoDiv.innerHTML = '';
 
+  const tabela = document.createElement('table');
+  tabela.classList.add('table');
+
+  const cabecalho = document.createElement('tr');
+
+  for (const key in wine[0]) {
+    const th = document.createElement('th');
+    th.textContent = key;
+    cabecalho.appendChild(th);
+  }
+  tabela.appendChild(cabecalho);
+
   wine.forEach(registro => {
-      //Cria um paragrafo
-      const paragrafo = document.createElement('p');
-
-      //Armazena os valores
-      let valores = '';
-      for (const key in registro) {
-          //Separa cada valor por virgula
-          valores += registro[key] + ', ';
-      }
-      //Remove a ultima virgula
-      valores = valores.slice(0, -2);
-
-      //Mostra o resultado
-      paragrafo.textContent = valores;
-      resultadoDiv.appendChild(paragrafo);
+    const linha = document.createElement('tr');
+    for (const key in registro) {
+      const td = document.createElement('td');
+      td.textContent = registro[key];
+      linha.appendChild(td);
+    }
+    tabela.appendChild(linha);
   });
+
+  resultadoDiv.appendChild(tabela);
 }
+
 
 document.addEventListener('DOMContentLoaded', function() {
   listarValores();
 });
 
 
+//VALORES DO ARRAY (NOMES) - OPÇÕES
+
+if (wine.length > 0) {
+  const chaves = Object.keys(wine[0]);
+  const dropdownPropriedade = document.getElementById('propriedade');
+  dropdownPropriedade.innerHTML = '';
+
+  console.log(chaves);
+
+  chaves.forEach(chave => {
+      const option = document.createElement('option');
+      option.textContent = chave;
+      dropdownPropriedade.appendChild(option);
+  });
+} else {
+  console.log('O array esta vazio!');
+}
 
 
 
+//ORDENAR POR ORDEM ASC OU DESC
 
+function ordenarRegistros(propriedade, ordem) {
+  const wineOrdenado = [...wine];
+
+  const comparar = (a, b) => {
+    if (ordem === 'asc') {
+      return a[propriedade] - b[propriedade];
+    } else {
+      return b[propriedade] - a[propriedade];
+    }
+  };
+
+  wineOrdenado.sort(comparar);
+
+  const resultadoDiv = document.querySelector('.resultado');
+  resultadoDiv.innerHTML = '';
+
+  wineOrdenado.forEach(registro => {
+    const paragrafo = document.createElement('p');
+    let valores = '';
+    for (const key in registro) {
+      valores += registro[key] + ', ';
+    }
+    valores = valores.slice(0, -2);
+    paragrafo.textContent = valores;
+    resultadoDiv.appendChild(paragrafo);
+  });
+}
+
+document.getElementById('propriedade').addEventListener('change', function() {
+  const propriedadeSelecionada = this.value;
+  const ordemSelecionada = document.getElementById('ordem').value;
+  ordenarRegistros(propriedadeSelecionada, ordemSelecionada);
+});
+
+document.getElementById('ordem').addEventListener('change', function() {
+  const propriedadeSelecionada = document.getElementById('propriedade').value;
+  const ordemSelecionada = this.value;
+  ordenarRegistros(propriedadeSelecionada, ordemSelecionada);
+});
+
+
+//LISTAR POR QUALIDADE - OPÇÕES
 
 function preencherDropdownQualidade() {
   const dropdownQualidade = document.getElementById('qualidade');
@@ -28583,29 +28650,130 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
+function listarQualidadeValores() {
+  const resultadoDiv = document.querySelector('.resultado');
+  resultadoDiv.innerHTML = '';
 
+  const qualidadeSelecionada = parseInt(document.getElementById('qualidade').value);
 
+  const resultadosFiltrados = wine.filter(registro => registro.quality === qualidadeSelecionada);
 
-if (wine.length > 0) {
-  const chaves = Object.keys(wine[0]);
-  const dropdownPropriedade = document.getElementById('propriedade');
-  dropdownPropriedade.innerHTML = '';
+  if (resultadosFiltrados.length === 0) {
+    resultadoDiv.textContent = "Nenhum resultado encontrado.";
+    return;
+  }
 
-  console.log(chaves);
+  const tabela = document.createElement('table');
+  tabela.classList.add('table');
 
-  chaves.forEach(chave => {
-      const option = document.createElement('option');
-      option.textContent = chave;
-      dropdownPropriedade.appendChild(option);
+  const cabecalho = document.createElement('tr');
+
+  for (const key in wine[0]) {
+    const th = document.createElement('th');
+    th.textContent = key;
+    cabecalho.appendChild(th);
+  }
+  tabela.appendChild(cabecalho);
+
+  resultadosFiltrados.forEach(registro => {
+    const linha = document.createElement('tr');
+    for (const key in registro) {
+      const td = document.createElement('td');
+      td.textContent = registro[key];
+      linha.appendChild(td);
+    }
+    tabela.appendChild(linha);
   });
-} else {
-  console.log('O array esta vazio!');
+
+  resultadoDiv.appendChild(tabela);
+}
+document.getElementById('qualidade').addEventListener('change', listarQualidadeValores);
+
+
+
+//LISTAR POR ALCOHOL - OPÇÕES
+
+function listarAlcoholValores() {
+  const resultadoDiv = document.querySelector('.resultado');
+  resultadoDiv.innerHTML = '';
+
+  const alcoholSelecionado = parseFloat(document.getElementById('alcohol').value);
+
+  const resultadosFiltrados = wine.filter(registro => registro.alcohol === alcoholSelecionado);
+
+  if (resultadosFiltrados.length === 0) {
+    resultadoDiv.textContent = "Nenhum resultado encontrado.";
+    return;
+  }
+
+  const tabela = document.createElement('table');
+  tabela.classList.add('table');
+
+  const cabecalho = document.createElement('tr');
+
+  for (const key in wine[0]) {
+    const th = document.createElement('th');
+    th.textContent = key;
+    cabecalho.appendChild(th);
+  }
+  tabela.appendChild(cabecalho);
+
+  resultadosFiltrados.forEach(registro => {
+    const linha = document.createElement('tr');
+    for (const key in registro) {
+      const td = document.createElement('td');
+      td.textContent = registro[key];
+      linha.appendChild(td);
+    }
+    tabela.appendChild(linha);
+  });
+
+  resultadoDiv.appendChild(tabela);
+}
+document.getElementById('alcohol').addEventListener('change', listarAlcoholValores);
+
+
+function preencherDropdownAlcohol() {
+  const dropdownAlcohol = document.getElementById('alcohol');
+  const valoresUnicosAlcohol = new Set();
+
+  wine.forEach(registro => {
+    valoresUnicosAlcohol.add(registro.alcohol);
+  });
+
+  const valoresOrdenadosAlcohol = Array.from(valoresUnicosAlcohol).sort((a, b) => a - b);
+
+  dropdownAlcohol.innerHTML = '';
+
+  valoresOrdenadosAlcohol.forEach(valor => {
+    const option = document.createElement('option');
+    option.textContent = valor;
+    dropdownAlcohol.appendChild(option);
+  });
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+  preencherDropdownAlcohol();
+});
 
 
-function propriedadeID() {
-  const dropdownPropriedade = document.getElementById('propriedade');
-  const idSelecionado = dropdownPropriedade.id;
-  console.log('ID:', idSelecionado);
+
+
+
+
+// DADOS SELECIONADOS - INFORMAÇÃO
+
+function atualizarDadosSelecionados(dados) {
+  const dadosSelecionadosDiv = document.getElementById('dadosSelecionados');
+  dadosSelecionadosDiv.textContent = dados;
 }
+
+document.getElementById('qualidade').addEventListener('change', function() {
+  const qualidadeSelecionada = document.getElementById('qualidade').value;
+  atualizarDadosSelecionados(`Qualidade selecionada: ${qualidadeSelecionada}`);
+});
+
+document.getElementById('alcohol').addEventListener('change', function() {
+  const alcoholSelecionada = document.getElementById('alcohol').value;
+  atualizarDadosSelecionados(`Alcohol selecionado: ${alcoholSelecionada}`);
+});
