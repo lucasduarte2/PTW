@@ -1,3 +1,4 @@
+"use strict";
 $(document).ready(function () {
   // Função para atualizar a imagem e mudar a cor do botão selecionado
   function updateImageAndButtonColor() {
