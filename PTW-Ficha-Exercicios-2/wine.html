@@ -27,7 +27,7 @@
         <div class="opcoes">
             <h3>Lista Geral</h3>
                 <label>Propriedade:</label>
-                <select onclick="propriedadeID()" name="propriedade" id="propriedade">
+                <select onclick="" name="propriedade" id="propriedade">
                 </select>
                 <br><br>
                 <label for="ordem">Ordem:</label>
@@ -44,6 +44,8 @@
                 <label for="alcohol">Alcohol:</label>
                 <select onclick="listarAlcoholValores()" id="alcohol">
                 </select>
+            <h3>Lista por os mais Alcoólicos</h3>
+                <button id="maisAlcoolico" onclick="encontrarMaisAlcoolico()">Pesquisar</button>
         </div>
         <div class="resultado">
             <p>Resultado dos Filtros</p>

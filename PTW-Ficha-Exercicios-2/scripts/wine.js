@@ -28515,7 +28515,6 @@ const wine = [
     "pH": 3.35,
     "sulphates": 0.38,
     "alcohol": 12.5,
-    "quality": 7
   }
 ];
 
@@ -28560,22 +28559,33 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-
+// Corrigir quando retiro uma propriedade nao ir buscar o que esta sem a propriedade
 if (wine.length > 0) {
-  const chaves = Object.keys(wine[0]);
   const dropdownPropriedade = document.getElementById('propriedade');
   dropdownPropriedade.innerHTML = '';
 
-  console.log(chaves);
+  const chavesPrimeiroObjeto = Object.keys(wine[0]);
+  const chavesComuns = new Set(chavesPrimeiroObjeto);
 
-  chaves.forEach(chave => {
-      const option = document.createElement('option');
-      option.textContent = chave;
-      dropdownPropriedade.appendChild(option);
+  // Verifique cada objeto
+  wine.forEach(objeto => {
+    const chavesObjeto = Object.keys(objeto);
+    chavesObjeto.forEach(chave => {
+      if (!chavesPrimeiroObjeto.includes(chave)) {
+        chavesComuns.delete(chave);
+      }
+    });
+  });
+
+  chavesComuns.forEach(chave => {
+    const option = document.createElement('option');
+    option.textContent = chave;
+    dropdownPropriedade.appendChild(option);
   });
 } else {
-  console.log('O array esta vazio!');
+  console.log('O array está vazio!');
 }
+
 
 
 
@@ -28776,3 +28786,42 @@ document.getElementById('alcohol').addEventListener('change', function() {
   const alcoholSelecionada = document.getElementById('alcohol').value;
   atualizarDadosSelecionados(`Alcohol selecionado: ${alcoholSelecionada}`);
 });
+
+
+ //MAIS ALCOÓLICO
+
+
+/* function encontrarMaisAlcoolico() {
+  // Ordena os vinhos com base no teor de álcool
+  const vinhosOrdenados = wine.sort((a, b) => b.alcohol - a.alcohol);
+  const maisAlcoolico = vinhosOrdenados[0];
+  console.log(maisAlcoolico);
+  const resultadoDiv = document.querySelector(".resultado");
+  resultadoDiv.innerHTML = `<p>O vinho mais alcoólico é ${maisAlcoolico.name} com ${maisAlcoolico.alcohol}% de álcool.</p>`;
+}
+
+document.getElementById("maisAlcoolico").addEventListener("click", encontrarMaisAlcoolico);
+*/
+
+
+    function encontrarMaisAlcoolico() {
+      const vinhosOrdenados = wine.sort((a, b) => b.alcohol - a.alcohol);
+      const maisAlcoolico = vinhosOrdenados[0];
+
+      const resultadoDiv = document.querySelector(".resultado");
+      resultadoDiv.innerHTML = '';
+
+      const ulElement = document.createElement("ul");
+
+      for (const prop in maisAlcoolico) {
+        if (maisAlcoolico.hasOwnProperty(prop)) {
+          const liElement = document.createElement("li");
+          liElement.textContent = `${prop}: ${maisAlcoolico[prop]}`;
+          ulElement.appendChild(liElement);
+        }
+      }
+
+      resultadoDiv.appendChild(ulElement);
+    }
+
+    document.getElementById("maisAlcoolico").addEventListener("click", encontrarMaisAlcoolico);
