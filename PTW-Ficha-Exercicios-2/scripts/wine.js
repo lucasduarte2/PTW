@@ -28560,7 +28560,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-//VALORES DO ARRAY (NOMES) - OPÇÕES
 
 if (wine.length > 0) {
   const chaves = Object.keys(wine[0]);
