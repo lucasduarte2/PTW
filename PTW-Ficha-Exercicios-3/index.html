@@ -6,15 +6,16 @@
     <link rel="stylesheet" href="styles/style.css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="scripts/script.js" defer></script>
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
 </head>
 <body>
     <div class="titulo">
-    <img src="imagens/globe.gif" alt="">
+    <img src="imagens/earth.gif" alt="">
     <h1>Conversor de Coordenadas</h1>
-    <img src="imagens/globe.gif" alt="">
+    <img src="imagens/earth.gif" alt="">
     </div>
     <div class="coordenadas">
-        <img src="imagens/worldmap.gif" alt="">
+        <img src="imagens/worldmapPNG.gif" alt="">
         <textarea class="texto" id="coordenadas" rows="4" cols="50"></textarea>
         <button class="btn-img" id="btn" onclick="limparTexto()">
             Converter
@@ -29,5 +30,6 @@
             <tbody></tbody>
         </table>
     </div>
+    <model-viewer src="imagens/planet_earth.glb" shadow-intensity="1" camera-controls touch-action="pan-y" auto-rotate></model-viewer>
 </body>
 </html>

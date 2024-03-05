@@ -1,5 +1,10 @@
 body {
     text-align: center;
+    background-image: url(../imagens/cool-background.png);
+}
+
+h1 {
+    color: white;
 }
 
 .titulo {
@@ -56,3 +61,9 @@ thead {
 td {
     text-align: center;
 }
+
+model-viewer {
+    position: absolute;
+    width: 800px;
+    height: 600px;
+  }
