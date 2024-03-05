@@ -1,0 +1,33 @@
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/style.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="scripts/script.js" defer></script>
+</head>
+<body>
+    <div class="titulo">
+    <img src="imagens/globe.gif" alt="">
+    <h1>Conversor de Coordenadas</h1>
+    <img src="imagens/globe.gif" alt="">
+    </div>
+    <div class="coordenadas">
+        <img src="imagens/worldmap.gif" alt="">
+        <textarea class="texto" id="coordenadas" rows="4" cols="50"></textarea>
+        <button class="btn-img" id="btn" onclick="limparTexto()">
+            Converter
+        </button>
+        <table id="tabelaCoordenadas">
+            <thead>
+                <tr>
+                    <th>Entrada (graus-min-seg)</th>
+                    <th>Saida (graus-decimais)</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</body>
+</html>

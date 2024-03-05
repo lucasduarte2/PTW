@@ -1,0 +1,58 @@
+body {
+    text-align: center;
+}
+
+.titulo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-img {
+    background-image: url("../imagens/bg_button.png");
+    background-size: cover;
+    background-position: center;
+    border: none;
+    border-radius: 10px;
+    width: 150px; 
+    height: 50px;
+    position: relative;
+    width: 180px;
+    left: 180px;
+    bottom: 220px;
+    color: white;
+    font-weight: bolder;
+}
+
+.btn-img:hover{
+    background-image: url("../imagens/bg_button_hover.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.coordenadas {
+    justify-content: center;
+    align-items: center;
+    display: grid;
+}
+
+.texto {
+    position: relative;
+    width: 380px;
+    left: 80px;
+    bottom: 240px;
+    resize: none;
+    border-radius: 10px;
+}
+
+thead {
+    background-color: #14bb14;
+}
+
+#tabelaCoordenadas {
+    display: none;
+}
+
+td {
+    text-align: center;
+}
