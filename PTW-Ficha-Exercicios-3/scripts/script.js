@@ -2,7 +2,7 @@
 
 const converterParaDecimal = (coordenadas) => {
     //Extrai os graus, minutos e segundos da string
-    const regex = /([NSWE]?\s?-?\d+(?:\.\d+)?)[°º]?\s*(\d+(?:\.\d+)?|)\s*(\d+(?:\.\d+)?|)\s*["'\s]*([NSWE]?)/i;
+    const regex = /(-?\d+(?:\.\d+)?)°\s*(\d+(?:\.\d+)?)'\s*(\d+(?:\.\d+)?)\"\s*([NSWE])/i;
     const correspondencia = coordenadas.match(regex);
     console.log(correspondencia)
 
