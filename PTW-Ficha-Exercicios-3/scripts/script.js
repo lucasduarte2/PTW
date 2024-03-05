@@ -2,8 +2,9 @@
 
 const converterParaDecimal = (coordenadas) => {
     //Extrai os graus, minutos e segundos da string
-    const regex = /([NSWE+-]?\d+)°\s*(\d+)'\s*(\d+\.?\d*)"?\s*([NSWE]?)$/i;
+    const regex = /([NSWE]?\s?-?\d+(?:\.\d+)?)[°º]?\s*(\d+(?:\.\d+)?|)\s*(\d+(?:\.\d+)?|)\s*["'\s]*([NSWE]?)/i;
     const correspondencia = coordenadas.match(regex);
+    console.log(correspondencia)
 
     if (!correspondencia) {
         return "Formato de coordenadas inválido!";
@@ -26,23 +27,25 @@ const converterParaDecimal = (coordenadas) => {
 };
 
 $('.btn-img').on('click', function() {
-    const textoCoordenadas = $('#coordenadas').val().trim();
+  const textoCoordenadas = $('#coordenadas').val().trim();
+  console.log("Texto das coordenadas:", textoCoordenadas);
 
-    const coordenadasDecimais = converterParaDecimal(textoCoordenadas);
+  const coordenadasDecimais = converterParaDecimal(textoCoordenadas);
 
-    const novaLinha = `
-        <tr>
-            <td>${textoCoordenadas}</td>
-            <td>${coordenadasDecimais}</td>
-        </tr>
-    `;
-    $('#tabelaCoordenadas tbody').append(novaLinha);
+  const novaLinha = `
+      <tr>
+          <td>${textoCoordenadas}</td>
+          <td>${coordenadasDecimais}</td>
+      </tr>
+  `;
+  $('#tabelaCoordenadas tbody').append(novaLinha);
 });
 
 
 
+
 //Limpar textarea
-function limparTexto() {
+/*function limparTexto() {
   document.getElementById("coordenadas").value = "";
   $('#tabelaCoordenadas').show();
-};
+};*/
